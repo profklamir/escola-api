@@ -78,4 +78,19 @@ function excluir(id, res) {
 }
 
 
-export { ler, inserir, lerUm, excluir };
+// Função para atualizar dados de alunos
+function atualizar(id, aluno, res){
+    const sql = "UPDATE alunos SET ? WHERE id = ?";
+
+    conexao.query(sql, [aluno, id], (erro, resultados) => {
+        if(erro){
+            res.status(400).json(erro.code);
+        } else {
+
+            // ... reticências é chamado spread operator (operador de espalhamento de objeto)
+            res.status(200).json({...aluno, id});
+        }
+    });
+}
+
+export { ler, inserir, lerUm, excluir, atualizar };

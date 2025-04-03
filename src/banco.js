@@ -1,12 +1,21 @@
 import mysql from 'mysql2';     // importando o módulo
 
 
-// armazenando os dados de conexão
+// Conexão LOCAL
+// const conexao = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'escola-api'
+// });
+
+
+// Conexão REMOTA
 const conexao = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'escola-api'
+    host: 'db4free.net',
+    user: 'senacao25',
+    password: 'PadreRicardo',
+    database: 'apiescolapen25'
 });
 
 
@@ -15,7 +24,7 @@ conexao.connect( erro => {
     if(erro){
         console.error(`Erro ao conectar: ${erro.message}`);
     } else {
-        console.log(`Banco de dados conectado com sucesso.`)
+        console.log(`Banco de dados conectado em: ${conexao.config.host}.`) // apresenta o host no qual estamos conectado.
     }
 });
 
